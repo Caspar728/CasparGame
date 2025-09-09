@@ -1,0 +1,46 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+//枚举
+public enum CardState
+{
+    Library, Deck
+}
+public class ClickCard : MonoBehaviour, IPointerDownHandler
+{
+    private DeckManager DeckManager;
+    //private PlayerData PlayerData;
+
+    //判断卡牌状态
+    public CardState state;
+    // Start is called before the first frame update
+    void Start()
+    {
+        //获取数据
+        DeckManager = GameObject.Find("DeckManager").GetComponent<DeckManager>();
+        //PlayerData = GameObject.Find("DataManager").GetComponent<PlayerData>();
+
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        int id = this.GetComponent<CardDisplay>().card.id;
+        DeckManager.UpdateCard(state, id);
+        /*if (state==CardState.Deck)
+        {
+
+        }
+        else if (state==CardState.Library)
+        {
+
+        }*/
+    }
+}
