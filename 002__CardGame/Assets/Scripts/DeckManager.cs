@@ -20,7 +20,10 @@ public class DeckManager : MonoBehaviour
     private Dictionary<int, GameObject> libraryDic = new Dictionary<int, GameObject>();
     private Dictionary<int, GameObject> deckDic = new Dictionary<int, GameObject>();
 
-
+    
+    
+    // 在Inspector中拖拽libraryCard预制体到这里
+    public GameObject libraryCardPrefab;
     void Start()
     {
         PlayerData = DataManager.GetComponent<PlayerData>();
@@ -28,10 +31,12 @@ public class DeckManager : MonoBehaviour
 
         UpdateLibray();
         UpdateDeck();
+
+       
     }
 
-    // 更新牌库显示
-    public void UpdateLibray()
+
+    public void UpdateLibray()    // 更新牌库显示
     {
         // 先清除现有牌库卡牌
         foreach (var card in libraryDic.Values)
@@ -50,8 +55,8 @@ public class DeckManager : MonoBehaviour
         }
     }
 
-    // 更新卡组显示
-    public void UpdateDeck()
+ 
+    public void UpdateDeck()   // 更新卡组显示
     {
         // 先清除现有卡组卡牌
         foreach (var card in deckDic.Values)
@@ -68,6 +73,7 @@ public class DeckManager : MonoBehaviour
                 CreatCard(i, CardState.Deck);
             }
         }
+        
     }
 
     // 处理卡牌状态更新（移动卡牌）
@@ -99,6 +105,7 @@ public class DeckManager : MonoBehaviour
                 // 更新卡组显示
                 UpdateDeck();
             }
+            
         }
     }
 
@@ -142,7 +149,7 @@ public class DeckManager : MonoBehaviour
         // 添加点击事件，调用UpdateCard方法
         cardButton.onClick.AddListener(() => OnCardClicked(_cardState, _id));
     }
-
+    
     // 卡牌点击处理方法
     private void OnCardClicked(CardState state, int cardId)
     {
