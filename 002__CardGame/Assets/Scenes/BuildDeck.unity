@@ -624,6 +624,7 @@ MonoBehaviour:
   deckPrefab: {fileID: 6936228444669099130, guid: 8b6408bcaed5b084e8ab774d56f0e262, type: 3}
   cardPrefab: {fileID: 4015770498912143555, guid: 156ecbfaf0310914e9ce050ba17eec9a, type: 3}
   DataManager: {fileID: 891387920}
+  selection: {fileID: 0}
 --- !u!1 &1240787178
 GameObject:
   m_ObjectHideFlags: 0
