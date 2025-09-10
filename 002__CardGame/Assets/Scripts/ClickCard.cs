@@ -33,7 +33,5 @@ public class ClickCard : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         int id = this.GetComponent<CardDisplay>().card.id;
-        DeckManager.UpdateCard(state, id);
-
     }
 }

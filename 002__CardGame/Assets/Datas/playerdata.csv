@@ -1,4 +1,4 @@
-coins,240,
+coins,240
 card,0,12
 card,1,11
 card,2,11
@@ -9,8 +9,7 @@ card,6,14
 card,7,5
 card,8,11
 card,9,2
-,,
-,,
-,,
 deck,0,1
 deck,1,1
+deck,5,1
+deck,6,1

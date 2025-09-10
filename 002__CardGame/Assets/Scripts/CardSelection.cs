@@ -1,47 +1,77 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
-
-
 
 public class CardController : MonoBehaviour
 {
-    public Image selection;
-    private void EnsureSelectionIsInitialized()
-    {
-        if (selection == null)
-        {
-            // 尝试从自身获取Image组件
-            selection = GetComponent<Image>();
-        }
-    }
+    [Header("卡片控制")]
+    public bool CardSelection = false; // 控制Image显示/隐藏的布尔值
+    public Image targetImage; // 需要控制的Image组件引用
+
+    private bool previousState; // 记录上一帧的状态，用于检测变化
 
     void Start()
     {
-        EnsureSelectionIsInitialized();
+        // 确保有Image组件引用
+        if (targetImage == null)
+        {
+            // 尝试自动获取Image组件
+            targetImage = GetComponentInChildren<Image>(true);
+
+            if (targetImage == null)
+            {
+                Debug.LogError("未找到Image组件，请手动分配或在子对象中添加Image组件");
+            }
+        }
+
+        // 初始化状态
+        previousState = CardSelection;
+        UpdateImageVisibility();
     }
 
     void Update()
     {
-        
+        // 检查状态是否发生变化
+        if (CardSelection != previousState)
+        {
+            UpdateImageVisibility();
+            previousState = CardSelection;
+        }
+
+        // 当CardSelection为true时执行额外方法
+        if (CardSelection)
+        {
+            YourMethod();
+            // 如果只需要执行一次，可以在这里重置CardSelection = false;
+        }
     }
 
-    public void ShowImage()    // 显示图片
+    // 更新Image的显示/隐藏状态
+    void UpdateImageVisibility()
     {
-        EnsureSelectionIsInitialized();
-        if (selection != null)
-            selection.enabled = true;
+        if (targetImage != null)
+        {
+            targetImage.enabled = CardSelection;
+            Debug.Log("Image可见性已设置为: " + CardSelection);
+        }
     }
-    public void HideImage()    // 隐藏图片
+
+    // 你想要执行的方法
+    void YourMethod()
     {
-        EnsureSelectionIsInitialized();
-        if (selection != null)
-            selection.enabled = false;
+        Debug.Log("CardSelection为true! 执行方法中...");
+
+        // 在这里写下你想要执行的代码
     }
-    public void ToggleImage()    // 切换显示状态
+
+    // 公共方法，用于外部控制CardSelection
+    public void SetCardSelection(bool state)
     {
-        selection.enabled = !selection.enabled;
+        CardSelection = state;
+    }
+
+    // 切换CardSelection状态
+    public void ToggleCardSelection()
+    {
+        CardSelection = !CardSelection;
     }
 }
