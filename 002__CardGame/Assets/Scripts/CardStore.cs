@@ -63,7 +63,7 @@ public class CardStore : MonoBehaviour
         return card;
         //这里加入抽卡稀有度
     }
-    public Card CopyCard(int _id)//在牌库中复制一张卡牌的实例
+    public Card CopyCard(int _id)      //在牌库中复制一张卡牌的实例
     {
         Card copyCard = new Card(_id, cardList[_id].cardName);//复制一张同名卡
         if (copyCard is MonsterCard)

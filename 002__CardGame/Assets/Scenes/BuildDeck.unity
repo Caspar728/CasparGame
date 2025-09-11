@@ -729,6 +729,7 @@ MonoBehaviour:
   maxDeckSize: 5
   maxCardCopies: 1
   maxUniqueCards: 5
+  PlayerData: {fileID: 8433529244080120267, guid: f647b1e225ab45f41a2c70aa458a14d3, type: 3}
   libraryCardPrefab: {fileID: 4015770498912143555, guid: 156ecbfaf0310914e9ce050ba17eec9a, type: 3}
   errorMessage: {fileID: 0}
   reminder: {fileID: 343449793}

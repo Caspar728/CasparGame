@@ -19,7 +19,7 @@ public class DeckManager : MonoBehaviour
     public int maxCardCopies = 1; // 单种卡牌最大可携带数量
     public int maxUniqueCards = 5; // 卡组最大不同种类数量
 
-    private PlayerData PlayerData;
+    public  PlayerData PlayerData;
     private CardStore CardStore;
 
     private Dictionary<int, GameObject> libraryDic = new Dictionary<int, GameObject>();
